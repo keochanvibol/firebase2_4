@@ -48,6 +48,12 @@ class SecondScreen extends StatelessWidget {
               ),
             ),
           ),
+          ElevatedButton(
+              onPressed: () {},
+              child: const SizedBox(
+                  height: 45,
+                  width: 100,
+                  child: Center(child: Text('InserData')))),
         ],
       ),
     );

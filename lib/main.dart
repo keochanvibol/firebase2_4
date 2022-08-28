@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter FireBase'),
+      home: const MyHomePage(title: 'Flutter FireStore'),
     );
   }
 }
@@ -38,7 +38,7 @@ class MainPoinPage extends StatelessWidget {
             if (snapshot.hasData) {
               return const SecondScreen();
             } else {
-              return MyHomePage(title: 'LoginPage');
+              return const MyHomePage(title: 'LoginPage');
             }
           }),
     );
@@ -94,11 +94,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   var message = login(mailController.text.trim(),
                       passwordController.text.trim());
-                  if (message == 'success') {
+                  if (await message == 'success') {
                     // ignore: use_build_context_synchronously
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MainPoinPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const SecondScreen()),
                     );
                   } else {
                     print('object data not found..!!!');
@@ -111,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-    );
+    ); //kkk123456
   }
 
   Future<String?> login(String email, String password) async {
